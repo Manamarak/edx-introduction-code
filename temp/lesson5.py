@@ -40,15 +40,14 @@ def isValidWord(word, hand, wordList):
 
 
     
-score=0
-    
+score = 0    
 howManyLettersInHand=0
-for char2 in playHand:
-    howManyLettersInHand += playHand[char]
+for char2 in hand:
+    howManyLettersInHand += hand[char2]
 while howManyLettersInHand > 0:
     print ("Current Hand:   ", end='')
-    for char in playHand:
-        counter = (playHand[char])
+    for char in hand:
+        counter = (hand[char])
         while counter > 0:
             print (char, ' ', end='')
             counter -=1
@@ -56,24 +55,13 @@ while howManyLettersInHand > 0:
     
     if userInput == ".":
         break
-    elif isValidWord (userInput, playHand, wordList) == True:
-        print ("yay")
-        # If the input is a single period:
-        
-            # End the game (break out of the loop)
-
-            
-        # Otherwise (the input is not a single period):
-        
-            # If the word is not valid:
-            
-                # Reject invalid word (print a message followed by a blank line)
-
-            # Otherwise (the word is valid):
-
-                # Tell the user how many points the word earned, and the updated total score, in one line followed by a blank line
+    elif isValidWord (userInput, hand, wordList) == False:
+        print ("Sorry, that's not a valid response")
+        print (" ")
+    else:  
+        score += getWordScore(word, howManyLettersInHand) 
+        print ("Your score is: ", score)
+        print (" ")
+        hand = (hand, word)
                 
-                # Update the hand 
-                
-
-    # Game is over (user entered a '.' or ran out of letters), so tell user the total score
+print ("Your score is: ", score)
